@@ -42,7 +42,8 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: crawler-${{ github.ref_name }}
+  # 组名带 v2 后缀：绕开一个卡死在 GitHub 后端、无法取消的僵尸 run（原 crawler-master 组被其占用）
+  group: crawler-v2-${{ github.ref_name }}
   cancel-in-progress: true
 
 permissions:
